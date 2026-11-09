@@ -1,0 +1,18 @@
+<!doctype html><html lang="id"><head><title>Login berhasil</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>:root{--bg:#fff;--fg:#1d1d1f;--mut:#555;--acc:#fe2c55;--box:#f3f3f5}
+@media (prefers-color-scheme:dark){:root{--bg:#121214;--fg:#f2f2f2;--mut:#aaa;--box:#1f1f23}}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);max-width:680px;margin:0 auto;padding:32px 16px;line-height:1.6}
+h1{font-size:1.6rem}a{color:var(--acc)}p,li{color:var(--fg)}small{color:var(--mut)}
+.box{background:var(--box);border-radius:10px;padding:14px;word-break:break-all;font-family:ui-monospace,Consolas,monospace;font-size:.9rem}
+button{background:var(--acc);color:#fff;border:0;border-radius:8px;padding:12px 18px;font-size:1rem;cursor:pointer;margin-top:12px}</style></head><body><h1>Login berhasil ✅</h1>
+<p id="msg">Salin alamat di bawah ini, lalu tempel ke kolom <b>url_atau_token</b> di GitHub Actions → <b>Login akun</b> (dalam 5 menit).</p>
+<div class="box" id="url"></div>
+<button id="copy">Salin alamat</button> <small id="ok"></small>
+<script>
+var u=location.href, el=document.getElementById('url'); el.textContent=u;
+if(!/[?&]code=/.test(u)){document.getElementById('msg').innerHTML='Halaman ini dipakai sebagai alamat kembali setelah login. Tidak ada kode login di alamat ini — mulai login dari GitHub Actions.';}
+document.getElementById('copy').onclick=function(){
+  (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){document.getElementById('ok').textContent='Tersalin!'},
+  function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);document.getElementById('ok').textContent='Tekan Ctrl+C';});
+};
+</script></body></html>
